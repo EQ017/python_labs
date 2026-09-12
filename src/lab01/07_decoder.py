@@ -1,10 +1,9 @@
 cipher = input('in: ')
-big_letters = 'АБВГДЕЁЖЗИЙКЛМНОПРТСУФХЦЧШЩЪЫЬЭЮЯABCDEFGHIJKLMNOPQRSTUVWXYZ'
 og_message = ''
 for x in cipher:
     if len(og_message) > 0 and og_message[-1] != '.':
         og_message += x
-    if og_message == '' and x in big_letters:
+    if og_message == '' and x == x.upper():
         og_message += x
 step = 0
 for x in range(len(og_message)):
