@@ -1,8 +1,8 @@
-N = int(input('Введите количество студентов: '))
+N = int(input('in_1: '))
 och = 0
 zaoch = 0
 for x in range(N):
-    print(f'Сдудент под номером {x+1}: ', end = '')
+    print(f'in_{x+2}: ', end = '')
     surname,name,age,format_of_taking_part = input().split()
     age = int(age)
     if format_of_taking_part == "True":
