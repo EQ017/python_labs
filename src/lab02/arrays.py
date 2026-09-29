@@ -43,8 +43,8 @@ def flatten(nums):
 # print(f"{[1.0,1,2.5,2.5,0]} -> {unique_sorted([1.0,1,2.5,2.5,0])}")
 # print(f"{[]} -> {unique_sorted([])}")
 
-print("flatten")
-print(f"{[[1,2],[3,4]]} -> {flatten([[1,2],[3,4]])}")
-print(f"{[[1,2],(3,4,5)]} -> {flatten([[1,2],(3,4,5)])}")
-print(f"{[[1],[],[2,3]]} -> {flatten([[1],[],[2,3]])}")
-print(f"{[[1,2],"ab"]} -> {flatten([[1,2],"ab"])}")
+# print("flatten")
+# print(f"{[[1,2],[3,4]]} -> {flatten([[1,2],[3,4]])}")
+# print(f"{[[1,2],(3,4,5)]} -> {flatten([[1,2],(3,4,5)])}")
+# print(f"{[[1],[],[2,3]]} -> {flatten([[1],[],[2,3]])}")
+# print(f"{[[1,2],"ab"]} -> {flatten([[1,2],"ab"])}")
