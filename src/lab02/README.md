@@ -119,6 +119,12 @@ def row_sums(mat):
 
 ![Скрин выполнения второго задания col_sums](../../images/lab02/Задание%202.2(2).png)
 
+# 3 Задание
+
+Получает кортеж с ФИО, группой и GPA и формирует строку с фамилией, инициалами, группой и средним баллом
+
+Также выполняется проверка входных данных
+
 ```python
 def format_record(student):
     if type(student) != tuple:
@@ -140,7 +146,6 @@ def format_record(student):
     gpa = student[2]
     return f"{fio}, гр. {group}, GPA {gpa:.2f}"
 ```
-
 
 
 ![Скрин выполнения третьего задания](../../images/lab02/Задание%203.2.png)
