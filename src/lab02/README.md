@@ -106,33 +106,18 @@ def row_sums(mat):
 Считает суммы элементов в столбах матрицы
 
 ```python
-def col_sums(mat):
-    n = []
-    mat = transpose(mat)
-    ln = len(mat[0])
-    for x in mat:
-        if len(x) != ln:
-            raise ValueError("Ошибка: рваная матрица")
-        n.append(sum(x))
-    return n
-```
-
-![Скрин выполнения второго задания col_sums](../../images/lab02/Задание%202.2(1).png)
-
-## 3 Задание
-
-Функция получает кортеж с данными студента, возвращает строку в которой фамилия с инициалами, а GPA округлен до 2 знаков после запятой
-
-Дополнительно проверяет входные данные
-
-```python
 def format_record(student):
     if type(student) != tuple:
         raise TypeError("Входные данные должны являться кортежем")
-    if type(student[0]) != str or type(student[1]) != str or type(student[2]) != float:
-        raise TypeError("Неверный тип данных")
     if len(student) != 3:
         raise ValueError("Неверное количество элементов")
+    if type(student[0]) != str or len(student[0]) <= 0:
+        raise TypeError("Неверное ФИО")
+    if type(student[1]) != str:
+        raise TypeError("Неверная группа")
+    if type(student[2]) != float:
+        raise TypeError("Неверная GPA")
+    
     if len(student[0].split()) == 2:
         fio = student[0].split()[0][0].upper() + student[0].split()[0][1:] + ' ' + student[0].split()[1][0].upper() + '.'
     elif len(student[0].split()) == 3:
