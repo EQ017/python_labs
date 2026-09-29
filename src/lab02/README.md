@@ -106,6 +106,20 @@ def row_sums(mat):
 Считает суммы элементов в столбах матрицы
 
 ```python
+def row_sums(mat):
+    n = []
+    mat = transpose(mat)
+    ln = len(mat[0])
+    for x in mat:
+        if len(x) != ln:
+            raise ValueError("Ошибка: рваная матрица")
+        n.append(sum(x))
+    return n
+```
+
+![Скрин выполнения второго задания col_sums](../../images/lab02/Задание%202.2(2).png)
+
+```python
 def format_record(student):
     if type(student) != tuple:
         raise TypeError("Входные данные должны являться кортежем")
