@@ -137,6 +137,8 @@ def format_record(student):
         raise TypeError("Неверная группа")
     if type(student[2]) != float:
         raise TypeError("Неверная GPA")
+    if student[2] > 5 or student[2] < 0:
+        raise ValueError("GPA вне диапазона")
     
     if len(student[0].split()) == 2:
         fio = student[0].split()[0][0].upper() + student[0].split()[0][1:] + ' ' + student[0].split()[1][0].upper() + '.'
