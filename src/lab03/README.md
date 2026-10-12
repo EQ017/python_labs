@@ -72,33 +72,30 @@ def top_n(freq: dict[str, int], n: int = 5):
 
 # 2 Задание
 
-Получает кортеж с ФИО, группой и GPA и формирует строку с фамилией, инициалами, группой и средним баллом
-
-Также выполняется проверка входных данных
+Данная программа для анализа текста использует функции, описанные до этого. Она приводит текст к нижнему регистру и удаляет всё лишнее, подстчитывает количество слов, количество уникальных слов, а также выводит топ-5 слов по частоте употребления
 
 ```python
-def format_record(student):
-    if type(student) != tuple:
-        raise TypeError("Входные данные должны являться кортежем")
-    if len(student) != 3:
-        raise ValueError("Неверное количество элементов")
-    if type(student[0]) != str or len(student[0]) <= 0:
-        raise TypeError("Неверное ФИО")
-    if type(student[1]) != str:
-        raise TypeError("Неверная группа")
-    if type(student[2]) != float:
-        raise TypeError("Неверная GPA")
-    if student[2] > 5 or student[2] < 0:
-        raise ValueError("GPA вне диапазона")
-    
-    if len(student[0].split()) == 2:
-        fio = student[0].split()[0][0].upper() + student[0].split()[0][1:] + ' ' + student[0].split()[1][0].upper() + '.'
-    elif len(student[0].split()) == 3:
-        fio = student[0].split()[0][0].upper() + student[0].split()[0][1:] + ' ' + student[0].split()[1][0].upper() + '.' + student[0].split()[2][0].upper() + '.'
-    group = student[1]
-    gpa = student[2]
-    return f"{fio}, гр. {group}, GPA {gpa:.2f}"
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from lib.text import normalize, tokenize, count_freq, top_n
+
+sys.stdin.reconfigure(encoding="utf-8")
+
+text = sys.stdin.read()
+ntext = normalize(text)
+words = tokenize(ntext)
+freq = count_freq(words)
+top5 = top_n(freq,5)
+
+print(f"Всего слов: {len(words)}")
+print(f"Уникальных слов: {len(freq)}")
+print("Топ-5: ")
+
+for w,c in top5:
+    print(f"{w}:{c}")
 ```
 
+Для быстрого тестирования используется команда echo, которая передаёт указанный текст в программу через стандартный поток ввода (stdin).
 
-![Скрин выполнения третьего задания](../../images/lab02/Задание%203.2.png)
+![Скрин выполнения основного задания](../../images/lab03/text_stats.png)
