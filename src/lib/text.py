@@ -34,4 +34,4 @@ def top_n(freq: dict[str, int], n: int = 5):
 # print(rf"count_freq(['a','b','a','c','b','a']) == {count_freq(['a','b','a','c','b','a'])}")
 # print(rf"top_n(count_freq(['a','b','a','c','b','a']), 2) == {top_n(count_freq(['a','b','a','c','b','a']), 2)}")
 
-print(rf"top_n(count_freq(['bb','aa','bb','aa','cc']), 2) == {top_n(count_freq(['bb','aa','bb','aa','cc']), 2)}")
+# print(rf"top_n(count_freq(['bb','aa','bb','aa','cc']), 2) == {top_n(count_freq(['bb','aa','bb','aa','cc']), 2)}")
