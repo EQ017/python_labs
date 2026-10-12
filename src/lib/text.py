@@ -11,8 +11,16 @@ def normalize(text: str, *, casefold: bool = True, yo2e: bool = True):
     text = ' '.join(text.split())
     return text
 
+# print(rf"normalize('ПрИвЕт\nМИр\t') == {normalize("ПрИвЕт\nМИр\t")}")
+# print(rf"normalize('ёжик, Ёлка') == {normalize('ёжик, Ёлка')}")
+
+
 def tokenize(text: str):
     return findall(r"\w+(?:-\w+)*", text)
+
+# print(rf"tokenize('привет, мир!') == {tokenize('привет, мир!')}")
+# print(rf"tokenize('по-настоящему круто') == {tokenize('по-настоящему круто')}")
+# print(rf"tokenize('2025 год') == {tokenize('2025 год')}")
 
 def count_freq(tokens: list[str]):
     freq = {}
@@ -22,3 +30,8 @@ def count_freq(tokens: list[str]):
 
 def top_n(freq: dict[str, int], n: int = 5):
     return sorted(freq.items(), key = lambda x: (-x[1], x[0]))[:n]
+
+# print(rf"count_freq(['a','b','a','c','b','a']) == {count_freq(['a','b','a','c','b','a'])}")
+# print(rf"top_n(count_freq(['a','b','a','c','b','a']), 2) == {top_n(count_freq(['a','b','a','c','b','a']), 2)}")
+
+print(rf"top_n(count_freq(['bb','aa','bb','aa','cc']), 2) == {top_n(count_freq(['bb','aa','bb','aa','cc']), 2)}")

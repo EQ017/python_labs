@@ -1,125 +1,76 @@
 # Кудрявцев Евгений
 # Группа БИВТ-26-6-1
 
-# Лабараторная работа номер 2
+# Третья лабораторная работа
 
 ## 1 Задание
 
-1.1 min_max
+1.1 normalize
 
-Возвращает минимальное и максимальное число из списка
+Убирает из строки лишние пробелы, приводит буквы к строчным версиям и убирает невидимые управляющие символы (например \n и \t).
 
-```python
-def min_max(nums):
-    if len(nums) == 0:
-        raise ValueError("Ошибка: список пуст")
-    mn = mx = nums[0]
-    for n in nums:
-        if n < mn:
-            mn = n
-        if n > mx:
-            mx = n
-    return (mn,mx)
-```
+При casefold == True использует вместо lower casefold для занижения символов.
 
-![Скрин выполнения первого задания min_max](../../images/lab02/Задание%201.2.png)
-
-1.2 unique_sorted
-
-Сортирует список, убирая повторы
+При yo2e == True заменяет ё/Ё на е/Е.
 
 ```python
-def unique_sorted(nums):
-    n = []
-    for x in nums:
-        if x in n:
-            continue
-        p = 0
-        while p < len(n) and n[p] < x:
-            p += 1
-        n.insert(p,x)
-    return n
+def normalize(text: str, *, casefold: bool = True, yo2e: bool = True):
+    if casefold:
+        text = text.casefold()
+    else:
+        text = text.lower()
+    if yo2e:
+        text = text.replace('ё','е')
+    text = text.strip()
+    text = ' '.join(text.split())
+    return text
 ```
 
-![Скрин выполнения первого задания unique_sorted](../../images/lab02/Задание%201.2(1).png)
+Пример работы
 
-1.3 flatten
+![Скрин работы функции normalize](../../images/lab03/normalize.png)
 
-Объединяет кортежи и списки в единый список
+1.2 tokenize
+
+Разбивает слова по небуквенно-цифровым разделителям, за слова считает последоваетльности символов из букв, цифр, подчеркивания и дефиса внутри слова. Возвращает список.
 
 ```python
-def flatten(nums):
-    n = []
-    for x in nums:
-        if type(x) != list and type(x) != tuple:
-            raise TypeError("Ошибка: элемент не является ни списком, ни кортежем")
-        for y in x:
-            n.append(y)
-    return n
+def tokenize(text: str):
+    return findall(r"\w+(?:-\w+)*", text)
 ```
 
-![Скрин выполнения первого задания flatten](../../images/lab02/Задание%201.2(2).png)
+Пример работы
 
-## 2 Задание
+![Скрин работы функции tokenize](../../images/lab03/tokenize.png)
 
-2.1 transpose
+1.3 count_freq
 
-Транспонирует матрицу(меняет строки и столбы местами)
+Подсчитывает частоты строк в списке и возвращает словарь с ключами в виде уникальных значений списка и аргументами в виде количества данных элементов в словаре.
 
 ```python
-def transpose(mat):
-    n = []
-    if len(mat) > 0:
-        ln = len(mat[0])
-        for x in mat:
-            if len(x) != ln:
-                raise ValueError("Ошибка: рваная матрица")
-        for x in range(ln):
-            new_mat = []
-            for y in mat:
-                new_mat.append(y[x])
-            n.append(new_mat)
-    return n
+def count_freq(tokens: list[str]):
+    freq = {}
+    for w in tokens:
+        freq[w] = freq.get(w,0)+1
+    return freq
 ```
 
-![Скрин выполнения второго задания transpose](../../images/lab02/Задание%202.2.png)
+1.4 top_n
 
-2.2 row_sums
-
-Считает суммы элементов в строках матрицы
+Возвращает топ-N по убыванию частоты в словаре, при равенстве частот возвращает по алфавиту слова.
 
 ```python
-def row_sums(mat):
-    n = []
-    ln = len(mat[0])
-    for x in mat:
-        if len(x) != ln:
-            raise ValueError("Ошибка: рваная матрица")
-        n.append(sum(x))
-    return n
+def top_n(freq: dict[str, int], n: int = 5):
+    return sorted(freq.items(), key = lambda x: (-x[1], x[0]))[:n]
 ```
 
-![Скрин выполнения второго задания row_sums](../../images/lab02/Задание%202.2(1).png)
+Примеры работы обеих функций
 
-2.3 col_sums
+![Скрин работы функций count_freq и top_n](../../images/lab03/count_freq%20+%20top_n.png)
 
-Считает суммы элементов в столбах матрицы
+![Скрин тай-брейка по слову при равной частоте](../../images/lab03/top_n%20равный.png)
 
-```python
-def row_sums(mat):
-    n = []
-    mat = transpose(mat)
-    ln = len(mat[0])
-    for x in mat:
-        if len(x) != ln:
-            raise ValueError("Ошибка: рваная матрица")
-        n.append(sum(x))
-    return n
-```
-
-![Скрин выполнения второго задания col_sums](../../images/lab02/Задание%202.2(2).png)
-
-# 3 Задание
+# 2 Задание
 
 Получает кортеж с ФИО, группой и GPA и формирует строку с фамилией, инициалами, группой и средним баллом
 
