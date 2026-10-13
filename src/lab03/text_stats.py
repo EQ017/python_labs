@@ -4,6 +4,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from lib.text import normalize, tokenize, count_freq, top_n
 
+sys.stdin.reconfigure(encoding="utf-8")
+
 text = sys.stdin.read()
 ntext = normalize(text)
 words = tokenize(ntext)
