@@ -75,11 +75,6 @@ def top_n(freq: dict[str, int], n: int = 5):
 Данная программа для анализа текста использует функции, описанные до этого. Она приводит текст к нижнему регистру и удаляет всё лишнее, подстчитывает количество слов, количество уникальных слов, а также выводит топ-5 слов по частоте употребления
 
 ```python
-import sys
-from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from lib.text import normalize, tokenize, count_freq, top_n
-
 text = sys.stdin.read()
 ntext = normalize(text)
 words = tokenize(ntext)
