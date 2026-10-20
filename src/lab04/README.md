@@ -71,11 +71,9 @@ text_report
 ```python
 parser = argparse.ArgumentParser()
 
-parser.add_argument("--in", dest="input_path",
-                            default="data/lab04/input.txt")
+parser.add_argument("--in", dest="input_path", default="data/lab04/input.txt")
 
-parser.add_argument("--out", dest="output_path",
-                            default="data/lab04/report.csv")
+parser.add_argument("--out", dest="output_path", default="data/lab04/report.csv")
 
 parser.add_argument("--encoding", default="utf-8")
 
