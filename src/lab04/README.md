@@ -69,7 +69,19 @@ text_report
 Выводится количество слов и уникальных слов, а также топ-5 слов по частоте. В csv-файл записывается результат
 
 ```python
-text = read_text("data/lab04/input.txt")
+parser = argparse.ArgumentParser()
+
+parser.add_argument("--in", dest="input_path",
+                            default="data/lab04/input.txt")
+
+parser.add_argument("--out", dest="output_path",
+                            default="data/lab04/report.csv")
+
+parser.add_argument("--encoding", default="utf-8")
+
+args = parser.parse_args()
+
+text = read_text(args.input_path, encoding=args.encoding)
 
 freq = count_freq(tokenize(normalize(text)))
 
