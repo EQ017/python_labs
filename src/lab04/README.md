@@ -10,7 +10,7 @@ read_txt
 Читает содержимое текстового файла и возвращает его в виде одной строки
 
 ```python
-def read_text(path: str | Path, encoding: str = "utf-8"):
+def read_text(path: str | Path, encoding: str = "utf-8") -> str:
     p = Path(path)
     return p.read_text(encoding=encoding)
 ```
@@ -26,7 +26,7 @@ write_csv
 Может добавить заголовок, а также проверяет, чтобы все строки имели одинаковое количество столбцов
 
 ```python
-def write_csv(rows: Iterable[Sequence], path: str | Path, header: tuple[str, ...] | None = None):
+def write_csv(rows: Iterable[Sequence], path: str | Path, header: tuple[str, ...] | None = None) -> None:
     p = Path(path)
     rows = list(rows)
 
@@ -55,7 +55,7 @@ ensure_parent_dir(★)
 Создаёт родительские папки пути, если они отсутствуют. Если папки уже существуют, то функция не выдаёт ошибку
 
 ```python
-def ensure_parent_dir(path: str | Path):
+def ensure_parent_dir(path: str | Path) -> None:
     p = Path(path)
     p.parent.mkdir(parents=True, exist_ok=True)
 ```
@@ -87,7 +87,7 @@ freq = count_freq(tokenize(normalize(text)))
 
 rows = sorted(freq.items(), key=lambda p: (-p[1], p[0]))
 
-write_csv(rows, "data/lab04/report.csv", header=("word","count"))
+write_csv(rows, args.output_path, header=("word","count"))
 
 print(f"Всего слов: {sum(freq.values())}")
 print(f"Уникальных слов: {len(freq)}")
@@ -144,7 +144,7 @@ C. Кодировка cp1251
 
 ![Скрин](../../images/lab04/img5.png)
 
-Отчёт (data/lab04/report_cp1251.csv):
+Отчёт (data/lab04/report.csv):
 
 ```
 word,count
