@@ -2,7 +2,7 @@ import csv
 from pathlib import Path
 from typing import Iterable, Sequence
 
-def read_text(path: str | Path, encoding: str = "utf-8"):
+def read_text(path: str | Path, encoding: str = "utf-8") -> str:
     """Читает содержимое текстового файла и возвращает его в виде одной строки.
     По умолчанию используется кодировка utf-8. Можно читать файлы других кодировок,
     передав их в encoding.
@@ -10,12 +10,12 @@ def read_text(path: str | Path, encoding: str = "utf-8"):
     p = Path(path)
     return p.read_text(encoding=encoding)
 
-def ensure_parent_dir(path: str | Path):
+def ensure_parent_dir(path: str | Path) -> None:
     """Создаёт родительские папки пути, если они отсутствуют."""
     p = Path(path)
     p.parent.mkdir(parents=True, exist_ok=True)
 
-def write_csv(rows: Iterable[Sequence], path: str | Path, header: tuple[str, ...] | None = None):
+def write_csv(rows: Iterable[Sequence], path: str | Path, header: tuple[str, ...] | None = None) -> None:
     """Создаёт или перезаписывает CSV-файл с разделителем-запятой.
     Если указан header, он записывается в первую строку. Все строки
     должны иметь одинаковую длину, иначе возникает ValueError.

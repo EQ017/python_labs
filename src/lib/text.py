@@ -11,10 +11,10 @@ def normalize(text: str, *, casefold: bool = True, yo2e: bool = True):
     text = ' '.join(text.split())
     return text
 
-# print(rf"normalize('ПрИвЕт\nМИр\t') == {normalize("ПрИвЕт\nМИр\t")}")
-# print(rf"normalize('ёжик, Ёлка') == {normalize('ёжик, Ёлка')}")
-# print(rf"normalize('Hello\r\nWorld') == {normalize('Hello\r\nWorld')}")
-# print(rf"normalize('  двойные   пробелы  ') == {normalize('  двойные   пробелы  ')}")
+print(rf"normalize('ПрИвЕт\nМИр\t') == {normalize("ПрИвЕт\nМИр\t")}")
+print(rf"normalize('ёжик, Ёлка') == {normalize('ёжик, Ёлка')}")
+print(rf"normalize('Hello\r\nWorld') == {normalize('Hello\r\nWorld')}")
+print(rf"normalize('  двойные   пробелы  ') == {normalize('  двойные   пробелы  ')}")
 
 def tokenize(text: str):
     return findall(r"\w+(?:-\w+)*", text)
