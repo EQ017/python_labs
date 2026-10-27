@@ -194,7 +194,7 @@ def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
 ![Скрин](../../images/lab05/img13.png)
 
 
-в `people.xlsx`
+в `cities.xlsx`
 
 ![Скрин](../../images/lab05/img12.png)
 
