@@ -48,6 +48,6 @@ def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
 
 if __name__ == "__main__":
     csv_to_xlsx(
-        "data/samples/people.json",
-        "data/out/people.xlsx"
+        "data/samples/cities.csv",
+        "data/out/cities.xlsx"
     )
