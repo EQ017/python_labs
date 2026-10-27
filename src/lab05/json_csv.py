@@ -10,7 +10,7 @@ def json_to_csv(json_path: str, csv_path: str) -> None:
         raise ValueError("Неверный тип файла")
 
     if not Path(json_path).is_file():
-        raise FileNotFoundError(f"Файл не найден: {csv_path}")
+        raise FileNotFoundError(f"Файл не найден: {json_path}")
 
     text = read_text(json_path)
 
@@ -25,7 +25,6 @@ def json_to_csv(json_path: str, csv_path: str) -> None:
     if not all(isinstance(item, dict) for item in data):
         raise ValueError("json-файл должен содержать список словарей")
 
-    # Все ключи, отсортированные по алфавиту
     fieldnames = sorted(set(
         key for item in data for key in item
     ))
@@ -39,7 +38,6 @@ def json_to_csv(json_path: str, csv_path: str) -> None:
     ]
 
     write_csv(rows, csv_path, header=tuple(fieldnames))
-
 
 def csv_to_json(csv_path: str, json_path: str) -> None:
     """Преобразует csv в json"""
@@ -72,7 +70,6 @@ def csv_to_json(csv_path: str, json_path: str) -> None:
     if any(None in row for row in data):
         raise ValueError("Слишком много столбцов в csv-файле")
 
-    # Заполняем отсутствующие значения пустыми строками
     for row in data:
         for key in fieldnames:
             if row[key] is None:
