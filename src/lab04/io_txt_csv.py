@@ -79,6 +79,6 @@ def write_csv(rows: Iterable[Sequence], path: str | Path, header: tuple[str, ...
 
 # print("\nCтроки разной длины:")
 # try:
-#     write_csv([("Me", 1), ("You",)], "data/lab04/check.csv")
+#     write_csv([("Me", 1), ("You")], "data/lab04/check.csv")
 # except ValueError:
 #     print("ValueError: строки разной длины")

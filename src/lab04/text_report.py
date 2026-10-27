@@ -2,7 +2,7 @@ import sys
 import argparse
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from lib.text import normalize, tokenize, count_freq, top_n
+from lib.io_helpers import normalize, tokenize, count_freq, top_n
 from lab04.io_txt_csv import read_text, write_csv
 
 
