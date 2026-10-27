@@ -1,10 +1,8 @@
 import csv
-import sys
 from pathlib import Path
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from lab04.io_txt_csv import read_text, ensure_parent_dir
+from src.lib.io_helpers import read_text, ensure_parent_dir
 
 def csv_to_xlsx(csv_path: str, xlsx_path: str) -> None:
     """Преобразует csv-файл в xlsx."""

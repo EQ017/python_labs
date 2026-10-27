@@ -88,6 +88,6 @@ if __name__ == "__main__":
     )
 
     csv_to_json(
-        "data/samples/ab.csv",
+        "data/samples/people.csv",
         "data/out/people_from_csv.json"
     )

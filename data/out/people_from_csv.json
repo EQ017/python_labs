@@ -1,27 +1,27 @@
 [
   {
-    "city": "SPB",
-    "country": "Russia",
-    "population": "5384342"
+    "name": "Alice",
+    "age": "22",
+    "city": "SPB"
   },
   {
-    "city": "Moscow",
-    "country": "Russia",
-    "population": "13010112"
+    "name": "Bob",
+    "age": "25",
+    "city": "Moscow"
   },
   {
-    "city": "Kazan",
-    "country": "Russia",
-    "population": "1306953"
+    "name": "Carlos",
+    "age": "30",
+    "city": "Kazan"
   },
   {
-    "city": "Novosibirsk",
-    "country": "Russia",
-    "population": "1620162"
+    "name": "Dana",
+    "age": "21",
+    "city": "SPB"
   },
   {
-    "city": "Yekaterinburg",
-    "country": "Russia",
-    "population": "1493749"
+    "name": "Andrey",
+    "age": "27",
+    "city": "Novosibirsk"
   }
 ]
