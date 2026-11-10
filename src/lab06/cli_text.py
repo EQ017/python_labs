@@ -1,5 +1,5 @@
 import argparse
-import sys
+
 from src.lib.io_helpers import (read_text,normalize,tokenize,count_freq,top_n)
 
 def main():
@@ -27,7 +27,7 @@ def main():
                         print(f"{number}: {line}", end="")
                     else:
                         print(line, end="")
-    
+
         elif args.command == "stats":
             text = read_text(args.input)
             words = tokenize(normalize(text))
