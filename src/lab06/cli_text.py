@@ -27,6 +27,7 @@ def main():
                         print(f"{number}: {line}", end="")
                     else:
                         print(line, end="")
+    
         elif args.command == "stats":
             text = read_text(args.input)
             words = tokenize(normalize(text))
@@ -38,12 +39,15 @@ def main():
 
             for word, count in top_n(freq, args.top):
                 print(f"{word}: {count}")
+
     except FileNotFoundError:
-        print(f"Ошибка: файл не найден: {args.input}",file=sys.stderr,)
+        parser.error(f"Файл не найден: {args.input}")
+
     except UnicodeDecodeError:
-        print("Ошибка: не удалось прочитать файл в кодировке UTF-8",file=sys.stderr,)
+        parser.error("Не удалось прочитать файл в кодировке UTF-8")
+
     except OSError as error:
-        print(f"Ошибка работы с файлом: {error}",file=sys.stderr,)
+        parser.error(f"Ошибка работы с файлом: {error}")
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
