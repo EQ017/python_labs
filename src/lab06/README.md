@@ -11,7 +11,7 @@
 
 Пример команды в консоли
 ```
-python3 -m src.lab06.cli_text cat --input data/samples/people.csv -n
+python -m src.lab06.cli_text cat --input data/samples/people.csv -n
 ```
 
 Вывод без нумерации и с ней
@@ -22,7 +22,7 @@ python3 -m src.lab06.cli_text cat --input data/samples/people.csv -n
 
 Пример команды в консоли
 ```
-python3 -m src.lab06.cli_text stats --input data/samples/people.csv --top 5
+python -m src.lab06.cli_text stats --input data/samples/people.csv --top 5
 ```
 
 ![Скрин](../../images/lab06/img2.png)
@@ -54,7 +54,7 @@ python -m src.lab06.cli_text stats --help
 
 Пример команды в консоли
 ```
-python3 -m src.lab06.cli_convert json2csv --in data/samples/people.json --out data/out/people.csv
+python -m src.lab06.cli_convert json2csv --in data/samples/people.json --out data/out/people.csv
 ```
 
 ![Скрин](../../images/lab06/img13.png)
@@ -63,7 +63,7 @@ python3 -m src.lab06.cli_convert json2csv --in data/samples/people.json --out da
 
 Пример команды в консоли
 ```
-python3 -m src.lab06.cli_convert csv2json --in data/samples/people.csv --out data/out/people.json
+python -m src.lab06.cli_convert csv2json --in data/samples/people.csv --out data/out/people.json
 ```
 
 ![Скрин](../../images/lab06/img14.png)
@@ -72,7 +72,7 @@ python3 -m src.lab06.cli_convert csv2json --in data/samples/people.csv --out dat
 
 Пример команды в консоли
 ```
-python3 -m src.lab06.cli_convert csv2xlsx --in data/samples/people.csv --out data/out/people.xlsx
+python -m src.lab06.cli_convert csv2xlsx --in data/samples/people.csv --out data/out/people.xlsx
 ```
 
 ![Скрин](../../images/lab06/img15.png)
@@ -88,8 +88,8 @@ python3 -m src.lab06.cli_convert csv2xlsx --in data/samples/people.csv --out dat
 *help справки*
 
 ```
-python3 -m src.lab06.cli_convert --help
-python3 -m src.lab06.cli_convert json2csv --help
+python -m src.lab06.cli_convert --help
+python -m src.lab06.cli_convert json2csv --help
 python -m src.lab06.cli_convert csv2json --help
 python -m src.lab06.cli_convert csv2xlsx --help
 ```
