@@ -6,12 +6,12 @@ def main():
     parser = argparse.ArgumentParser(description="Работа с текстовыми файлами")
     sub = parser.add_subparsers(dest="command",required=True)
 
-    cat_parser = sub.add_parser("cat",help="Вывести содержимое файла",)
-    cat_parser.add_argument("--input",required=True,help="Путь к входному файлу UTF-8",)
+    cat_parser = sub.add_parser("cat",help="Вывести содержимое файла")
+    cat_parser.add_argument("--input",required=True,help="Путь к входному файлу UTF-8")
     cat_parser.add_argument("-n",action="store_true",help="Нумеровать строки")
 
-    stats_parser = sub.add_parser("stats",help="Посчитать частоты слов",)
-    stats_parser.add_argument("--input",required=True,help="Путь к входному файлу UTF-8",)
+    stats_parser = sub.add_parser("stats",help="Посчитать частоты слов")
+    stats_parser.add_argument("--input",required=True,help="Путь к входному файлу UTF-8")
     stats_parser.add_argument("--top",type=int,default=5,help="Количество слов в топе (по умолчанию 5)")
 
     args = parser.parse_args()

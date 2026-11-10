@@ -7,9 +7,9 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
 
     for command, description in (("json2csv", "Преобразовать json в csv"),("csv2json", "Преобразовать csv в json"),("csv2xlsx", "Преобразовать csv в xlsx")):
-        p = sub.add_parser(command,help=description,description=description,)
-        p.add_argument("--in",dest="input_path",required=True,help="Путь к входному файлу",)
-        p.add_argument("--out",dest="output_path",required=True,help="Путь к выходному файлу",)
+        p = sub.add_parser(command,help=description,description=description)
+        p.add_argument("--in",dest="input_path",required=True,help="Путь к входному файлу")
+        p.add_argument("--out",dest="output_path",required=True,help="Путь к выходному файлу")
 
     args = parser.parse_args()
 
