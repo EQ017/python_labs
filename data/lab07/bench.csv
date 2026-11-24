@@ -1,20 +1,20 @@
 task,n,impl,seconds
-sort,1000,sorted,5.9299985878169537e-05
-sort,1000,bubble_sort,0.04529199993703514
-sort,1000,insertion_sort,0.019124799990095198
-sort,1000,selection_sort,0.01525009993929416
-sort,10000,sorted,0.00105640001129359
-sort,10000,bubble_sort,3.4441603999584913
-sort,10000,insertion_sort,1.491551399929449
-sort,10000,selection_sort,1.402738800039515
-sort,100000,sorted,0.015124500030651689
-sort,100000,bubble_sort,> 60 с
-sort,100000,insertion_sort,> 60 с
-sort,100000,selection_sort,> 60 с
-search,100000,linear_search,52.6459021999035
-search,100000,sort_before_binary,0.019615800003521144
-search,100000,binary_search,0.017605199944227934
-two_sum,1000,two_sum_brute,0.015762399998493493
-two_sum,1000,two_sum_fast,6.440002471208572e-05
-two_sum,10000,two_sum_brute,1.2516276000533253
-two_sum,10000,two_sum_fast,0.001101600006222725
+sort,1000,sorted,6.0399994254112244e-05
+sort,1000,bubble_sort,0.0630285000661388
+sort,1000,insertion_sort,0.01886539999395609
+sort,1000,selection_sort,0.020386300049722195
+sort,10000,sorted,0.0015051999362185597
+sort,10000,bubble_sort,3.740198100102134
+sort,10000,insertion_sort,1.608664199942723
+sort,10000,selection_sort,1.561396799981594
+sort,100000,sorted,0.015306100016459823
+sort,100000,bubble_sort,> 60 с (оценка)
+sort,100000,insertion_sort,> 60 с (оценка)
+sort,100000,selection_sort,> 60 с (оценка)
+search,100000,linear_search,66.38949510001112
+search,100000,sort_before_binary,0.020772499963641167
+search,100000,binary_search,0.020106200012378395
+two_sum,1000,two_sum_brute,0.017879400053061545
+two_sum,1000,two_sum_fast,6.550003308802843e-05
+two_sum,10000,two_sum_brute,1.3685682999202982
+two_sum,10000,two_sum_fast,0.0009305999847128987

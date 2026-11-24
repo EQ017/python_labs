@@ -1,7 +1,5 @@
 import random
 import timeit
-import multiprocessing as mp
-from queue import Empty
 from pathlib import Path
 
 from src.lab04.io_txt_csv import write_csv
@@ -12,44 +10,21 @@ def measure(fn, number=1, repeat=5):
     times = timeit.repeat(fn,number=number,repeat=repeat)
     return min(times) / number
 
-def sort_worker(fn, data, queue):
-    try:
-        t = measure(lambda: fn(data),repeat=1)
-        queue.put(t)
-    except Exception as error:
-        queue.put(str(error))
-def limited_time(fn, data, limit=60, repeat=3):
-    times = []
-    for _ in range(repeat):
-        queue = mp.Queue()
-        process = mp.Process(target=sort_worker,args=(fn, data, queue))
-        process.start()
-        process.join(timeout=limit)
-        if process.is_alive():
-            process.terminate()
-            process.join()
-            queue.close()
-            return f"> {limit} с"
-        try:
-            result = queue.get(timeout=5)
-        except Empty:
-            raise RuntimeError(f"Не удалось измерить {fn.__name__}")
-        finally:
-            queue.close()
-        if isinstance(result, str):
-            raise RuntimeError(result)
-        times.append(result)
-    return min(times)
-
-def bench_sorts(n):
+def bench_sorts(n, previous_times):
     data = [random.randint(-10000, 10000) for _ in range(n)]
     rows = []
     functions = (("sorted", sorted),("bubble_sort", bubble_sort),("insertion_sort", insertion_sort),("selection_sort", selection_sort))
     for name, fn in functions:
         if n == 100_000 and name != "sorted":
-            t = limited_time(fn, data)
+            estimated = previous_times[name] * (n / 10_000) ** 2
+            if estimated > 60:
+                t = "> 60 с (оценка)"
+            else:
+                t = measure(lambda: fn(data),repeat=3)
         else:
             t = measure(lambda: fn(data))
+        if n == 10_000:
+            previous_times[name] = t
         rows.append(("sort", n, name, t))
     return rows
 
@@ -77,19 +52,21 @@ def bench_two_sum(n):
 def main():
     random.seed(42)
     rows = []
+    previous_times = {}
     for n in (1_000, 10_000, 100_000):
-        rows.extend(bench_sorts(n))
+        rows.extend(bench_sorts(n, previous_times))
     rows.extend(bench_search())
     for n in (1_000, 10_000):
         rows.extend(bench_two_sum(n))
-    print(f"{'task':<12} {'n':<10} {'impl':<22} {'seconds':<15}")
-    print("-" * 60)
+    print(f"{'task':<12} {'n':<10} {'impl':<22} {'seconds':<20}")
+    print("-" * 65)
     for task, n, impl, seconds in rows:
         if isinstance(seconds, float):
             seconds = f"{seconds:.6f}"
-        print(f"{task:<12} {n:<10} {impl:<22} {seconds:<15}")
+        print(f"{task:<12} {n:<10} {impl:<22} {seconds:<20}")
     path = Path("data/lab07/bench.csv")
     path.parent.mkdir(parents=True, exist_ok=True)
     write_csv(rows,path,header=("task", "n", "impl", "seconds"))
+
 if __name__ == "__main__":
     main()
